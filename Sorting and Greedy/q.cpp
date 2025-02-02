@@ -1,7 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
+#define double long double
 #define endl "\n"
+#define inputarr(v, n) \
+    for (int i = 0; i < n; i++) cin >> v[i];
+
 #define printarr(v)                    \
     for (int i = 0; i < v.size(); i++) \
         cout << v[i] << " ";           \
@@ -10,29 +14,16 @@ using namespace std;
 //---------------------------------------//
 
 void solve() {
-    int n;
-    cin >> n;
-    multiset<int> ms;
-    vector<int> v(n);
-    for (int i = 0; i < n; i++) {
-        int z;
-        cin >> z;
-        v[i] = z;
-        ms.insert(z);
-    }
-    sort(v.begin(), v.end());
-    int cnt = 0;
-    int i = 0, j = n / 2;
-    while (i < n / 2 && j < n && i < j) {
-        if (v[i] * 2 <= v[j] && i < j) {
-            cnt++;
-            i++;
-            j++;
+    int n, k;
+    cin >> n >> k;
+    while (k--) {
+        if (n % 10 == 0) {
+            n /= 10;
         } else {
-            j++;
+            n -= 1;
         }
     }
-    cout << n - cnt << endl;
+    cout << n << endl;
 }
 
 signed main() {

@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
+#define double long double
 #define endl "\n"
 #define printarr(v)                    \
     for (int i = 0; i < v.size(); i++) \
@@ -8,7 +9,7 @@ using namespace std;
     cout << endl;
 
 //---------------------------------------//
-
+#define eps 1e-8
 void solve() {
     double p, q, r, s, t, u;
     while (cin >> p >> q >> r >> s >> t >> u) {
@@ -17,20 +18,22 @@ void solve() {
         //     double mid = i;
         //     cout << (p * (exp(-mid))) + (q * (sin(mid))) + (r * (cos(mid))) + (s * (tan(mid))) + (t * mid * mid) + u << endl;
         // }
-        while (lo <= hi) {
+        int cnt = 100;
+        bool f = false;
+        while (cnt--) {
             mid = (lo + hi) / 2;
             double equans = ((p * (exp(-mid))) + (q * (sin(mid))) + (r * (cos(mid))) + (s * (tan(mid))) + (t * mid * mid) + u);
-            // cout << lo << ' ' << mid << ' ' << hi << " " << equans << endl;
-            if (equans >= 0.00001 && equans <= 0.0009) {
-                cout << fixed << setprecision(5) << mid << " " << equans << endl;
+            if (equans >= -0.00000000000009 && equans <= 0.00000000001) {
+                cout << fixed << setprecision(4) << mid << endl;
+                f = true;
                 break;
             } else if (equans < 0) {
-                hi = mid - 0.00001;
+                hi = mid;
             } else {
-                lo = mid + 0.00001;
+                lo = mid;
             }
         }
-        if (lo > hi) cout << "No solution" << endl;
+        if (!f) cout << "No solution" << endl;
     }
 }
 
