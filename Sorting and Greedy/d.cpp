@@ -14,6 +14,22 @@ using namespace std;
 //---------------------------------------//
 
 void solve() {
+    int n;
+    while (cin >> n) {
+        if (n == 0) break;
+        vector<int> v(n);
+        inputarr(v, n);
+        int cnt = 0;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (v[i] > v[j]) {
+                    swap(v[i], v[j]);
+                    cnt++;
+                }
+            }
+        }
+        cout << cnt << endl;
+    }
 }
 
 signed main() {
